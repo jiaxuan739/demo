@@ -1,0 +1,104 @@
+/* ============================================
+   工作台 Dashboard - 样式
+   ============================================ */
+
+/* --- 顶部 Hero 卡片 --- */
+.hero-card {
+  position: relative;
+  background: linear-gradient(135deg, #2B6FF2 0%, #5B8FF9 40%, #8BB8FF 100%);
+  border-radius: 28rpx;
+  padding: 48rpx 36rpx 36rpx;
+  margin-bottom: 28rpx;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  top: -60rpx;
+  right: -30rpx;
+  width: 260rpx;
+  height: 260rpx;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-greeting { font-size: 26rpx; color: rgba(255,255,255,0.7); }
+.hero-name { font-size: 44rpx; font-weight: 700; color: #fff; margin-top: 6rpx; }
+.hero-role {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 4rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  margin-top: 12rpx;
+}
+
+/* 统计数据行 */
+.hero-stats {
+  display: flex;
+  margin-top: 32rpx;
+  position: relative;
+  z-index: 1;
+}
+.hero-stat {
+  flex: 1;
+  text-align: center;
+}
+.hero-stat-num { font-size: 40rpx; font-weight: 800; color: #fff; }
+.hero-stat-label { font-size: 22rpx; color: rgba(255,255,255,0.65); margin-top: 4rpx; }
+
+/* --- 区块 --- */
+.section { margin-bottom: 28rpx; }
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20rpx;
+}
+
+/* --- 快捷操作网格 --- */
+.quick-grid {
+  display: flex;
+  gap: 16rpx;
+}
+.quick-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32rpx 0;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: var(--shadow-sm);
+}
+.quick-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  margin-bottom: 12rpx;
+}
+.quick-text { font-size: 24rpx; color: var(--text-secondary); font-weight: 600; }
+
+/* --- 集成状态 --- */
+.integration-list {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 8rpx 28rpx;
+  box-shadow: var(--shadow-sm);
+}
+.integration-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28rpx 0;
+}
+.integration-row + .integration-row { border-top: 1rpx solid var(--border); }
+.int-left { display: flex; align-items: center; gap: 16rpx; font-size: 28rpx; font-weight: 600; }
+.int-dot { width: 16rpx; height: 16rpx; border-radius: 50%; }
+.int-dot.online { background: var(--success); box-shadow: 0 0 0 6rpx var(--success-light); }
+.int-tag { font-size: 22rpx; color: var(--text-hint); background: #F9FAFB; padding: 6rpx 16rpx; border-radius: 12rpx; }
+.int-hint { text-align: center; font-size: 22rpx; color: var(--text-hint); margin-top: 16rpx; }

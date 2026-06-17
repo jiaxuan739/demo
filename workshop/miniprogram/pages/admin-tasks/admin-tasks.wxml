@@ -1,0 +1,100 @@
+<!-- 管理员 - 任务管理 -->
+<view class="container">
+
+  <view class="toolbar fade-in">
+    <view class="toolbar-title">
+      📋 任务列表
+      <text class="toolbar-count">{{tasks.length}}个</text>
+    </view>
+    <button class="btn btn-primary btn-sm" bindtap="showAdd">＋ 新建</button>
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="filter-row fade-in">
+    <view class="filter-tag {{activeFilter==='all'?'active':''}}" bindtap="setFilter" data-filter="all">全部</view>
+    <view class="filter-tag {{activeFilter==='pending'?'active':''}}" bindtap="setFilter" data-filter="pending">待处理</view>
+    <view class="filter-tag {{activeFilter==='in_progress'?'active':''}}" bindtap="setFilter" data-filter="in_progress">进行中</view>
+    <view class="filter-tag {{activeFilter==='completed'?'active':''}}" bindtap="setFilter" data-filter="completed">已完成</view>
+  </view>
+
+  <!-- 任务列表 -->
+  <block wx:for="{{filteredTasks}}" wx:key="id">
+    <view class="task-card fade-in" style="animation-delay:{{0.05 * index}}s">
+      <view class="tk-left">
+        <view class="tk-status-bar bg-{{item.status}}"></view>
+      </view>
+      <view class="tk-body">
+        <view class="tk-top">
+          <view class="tk-title">{{item.title}}</view>
+          <view class="tag tag-{{item.status}}">{{statusMap[item.status].label}}</view>
+        </view>
+        <view class="tk-info">
+          👤 {{item.user_name}} ({{item.student_id}})
+        </view>
+        <view class="tk-info" wx:if="{{item.description}}">
+          📝 {{item.description}}
+        </view>
+        <view class="tk-meta">
+          <text class="tk-meta-item">📊 产量 {{item.quantity || 0}}</text>
+          <text class="tk-meta-item" wx:if="{{item.deadline}}">📅 {{item.deadline}}</text>
+        </view>
+        <view class="tk-actions">
+          <button class="btn btn-ghost btn-sm" bindtap="editTask" data-id="{{item.id}}">✏️ 编辑</button>
+          <button class="btn btn-danger btn-sm" bindtap="deleteTask" data-id="{{item.id}}" data-title="{{item.title}}">🗑 删除</button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:if="{{filteredTasks.length === 0}}" class="empty-state">
+    <view class="icon">📭</view>
+    <view class="text">暂无匹配的任务</view>
+  </view>
+</view>
+
+<!-- 弹窗遮罩 -->
+<view class="modal-mask" wx:if="{{showModal}}" bindtap="closeModal"></view>
+
+<!-- 新建/编辑弹窗 -->
+<view class="modal-popup {{showModal ? 'show' : ''}}">
+  <view class="modal-bar"></view>
+  <view class="modal-title">{{editId ? '✏️ 编辑任务' : '📋 新建任务'}}</view>
+
+  <view class="input-group">
+    <view class="input-label">负责人ID</view>
+    <input class="input-field" type="number" bindinput="onField" data-field="user_id" value="{{form.user_id}}" placeholder="输入用户ID" />
+  </view>
+  <view class="input-group">
+    <view class="input-label">任务标题</view>
+    <input class="input-field" bindinput="onField" data-field="title" value="{{form.title}}" placeholder="请输入任务名称" />
+  </view>
+  <view class="input-group">
+    <view class="input-label">任务描述</view>
+    <input class="input-field" bindinput="onField" data-field="description" value="{{form.description}}" placeholder="详细描述（可选）" />
+  </view>
+  <view class="input-group">
+    <view class="input-label">状态</view>
+    <picker mode="selector" range="{{statusLabels}}" bindchange="onStatusChange" value="{{statusIndex}}">
+      <view class="input-field picker-field">
+        <text class="dot dot-{{form.status}}"></text>
+        {{statusLabels[statusIndex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="form-row">
+    <view class="input-group" style="flex:1;margin-right:16rpx">
+      <view class="input-label">产量</view>
+      <input class="input-field" type="number" bindinput="onField" data-field="quantity" value="{{form.quantity}}" />
+    </view>
+    <view class="input-group" style="flex:1">
+      <view class="input-label">截止日期</view>
+      <input class="input-field" bindinput="onField" data-field="deadline" value="{{form.deadline}}" placeholder="YYYY-MM-DD" />
+    </view>
+  </view>
+
+  <view class="modal-actions">
+    <button class="btn btn-ghost" style="flex:1" bindtap="closeModal">取消</button>
+    <button class="btn btn-primary" style="flex:2" bindtap="submitTask">{{editId ? '保存修改' : '确认创建'}}</button>
+  </view>
+</view>
+

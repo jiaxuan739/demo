@@ -1,0 +1,15 @@
+{
+  "description": "车间管理系统 - Workshop Management System",
+  "packOptions": { "ignore": [] },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.19.0",
+  "appid": "touristappid",
+  "projectname": "workshop-wms",
+  "condition": {}
+}

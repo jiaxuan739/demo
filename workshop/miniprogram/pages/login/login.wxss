@@ -1,0 +1,114 @@
+/* ============================================
+   登录页 - 样式
+   ============================================ */
+
+.login-page {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 0 40rpx;
+}
+
+/* --- 品牌区 --- */
+.brand-area {
+  text-align: center;
+  padding-top: 100rpx;
+  padding-bottom: 48rpx;
+}
+.brand-icon {
+  font-size: 72rpx;
+  margin-bottom: 16rpx;
+}
+.brand-title {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 2rpx;
+}
+.brand-sub {
+  font-size: 24rpx;
+  color: var(--text-hint);
+  margin-top: 8rpx;
+  letter-spacing: 1rpx;
+}
+
+/* --- 切换 Tab --- */
+.login-tabs {
+  display: flex;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 6rpx;
+  margin-bottom: 32rpx;
+  box-shadow: var(--shadow-sm);
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 22rpx 0;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-hint);
+  transition: all 0.3s;
+}
+.tab.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+/* --- 表单卡片 --- */
+.form-card {
+  background: #fff;
+  border-radius: 28rpx;
+  padding: 40rpx 36rpx;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.4s ease;
+}
+.form-icon { font-size: 48rpx; text-align: center; margin-bottom: 8rpx; }
+.form-title {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 32rpx;
+}
+.form-hint {
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--text-hint);
+  margin-top: 20rpx;
+}
+
+/* --- 扫码区域 --- */
+.scan-demo {
+  text-align: center;
+  padding: 40rpx 0;
+}
+.scan-frame {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+.scan-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+/* --- 分割线文字 --- */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 16rpx 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1rpx;
+  background: var(--border);
+}
+.divider-text {
+  padding: 0 24rpx;
+  font-size: 24rpx;
+  color: var(--text-hint);
+}
+

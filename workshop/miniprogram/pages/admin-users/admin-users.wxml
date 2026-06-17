@@ -1,0 +1,79 @@
+<!-- 管理员 - 人员管理 -->
+<view class="container">
+
+  <!-- 顶部操作栏 -->
+  <view class="toolbar fade-in">
+    <view class="toolbar-title">
+      👥 人员列表
+      <text class="toolbar-count">{{users.length}}人</text>
+    </view>
+    <button class="btn btn-primary btn-sm" bindtap="showAdd">＋ 添加</button>
+  </view>
+
+  <!-- 用户卡片列表 -->
+  <block wx:for="{{users}}" wx:key="id">
+    <view class="user-card fade-in" style="animation-delay:{{0.05 * index}}s">
+      <view class="uc-avatar">{{item.name ? item.name[0] : '?'}}</view>
+      <view class="uc-body">
+        <view class="uc-name">{{item.name}}</view>
+        <view class="uc-row">
+          <text class="uc-label">学号</text>
+          <text>{{item.student_id}}</text>
+        </view>
+        <view class="uc-row">
+          <text class="uc-label">班级</text>
+          <text>{{item.class_name || '未设置'}}</text>
+        </view>
+        <view class="uc-row token-row">
+          <text class="uc-label">二维码</text>
+          <text class="uc-token">{{item.qrcode_token}}</text>
+        </view>
+      </view>
+      <view class="uc-actions">
+        <view class="action-btn edit" bindtap="editUser" data-id="{{item.id}}" data-name="{{item.name}}" data-class="{{item.class_name}}">
+          ✏️
+        </view>
+        <view class="action-btn del" bindtap="deleteUser" data-id="{{item.id}}" data-name="{{item.name}}">
+          🗑
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:if="{{users.length === 0}}" class="empty-state">
+    <view class="icon">📭</view>
+    <view class="text">暂无人员数据</view>
+  </view>
+</view>
+
+<!-- 弹窗遮罩 -->
+<view class="modal-mask" wx:if="{{showModal}}" bindtap="closeModal"></view>
+
+<!-- 添加/编辑弹窗 -->
+<view class="modal-popup {{showModal ? 'show' : ''}}">
+  <view class="modal-bar"></view>
+  <view class="modal-title">{{editId ? '✏️ 编辑人员' : '➕ 添加人员'}}</view>
+
+  <view class="input-group">
+    <view class="input-label">学号</view>
+    <input class="input-field" placeholder="请输入学号" bindinput="onField" data-field="student_id" value="{{form.student_id}}" />
+  </view>
+  <view class="input-group">
+    <view class="input-label">姓名</view>
+    <input class="input-field" placeholder="请输入姓名" bindinput="onField" data-field="name" value="{{form.name}}" />
+  </view>
+  <view class="input-group">
+    <view class="input-label">班级</view>
+    <input class="input-field" placeholder="请输入班级" bindinput="onField" data-field="class_name" value="{{form.class_name}}" />
+  </view>
+  <view class="input-group">
+    <view class="input-label">手机号</view>
+    <input class="input-field" placeholder="请输入手机号" bindinput="onField" data-field="phone" value="{{form.phone}}" />
+  </view>
+
+  <view class="modal-actions">
+    <button class="btn btn-ghost" style="flex:1" bindtap="closeModal">取消</button>
+    <button class="btn btn-primary" style="flex:2" bindtap="submitUser">{{editId ? '保存修改' : '确认添加'}}</button>
+  </view>
+</view>
+

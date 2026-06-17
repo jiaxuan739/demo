@@ -1,0 +1,118 @@
+/* ============================================
+   人员管理 - 样式
+   ============================================ */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.toolbar-title { font-size: 32rpx; font-weight: 700; }
+.toolbar-count {
+  font-size: 24rpx;
+  color: var(--text-hint);
+  background: #F0F2F5;
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+  margin-left: 12rpx;
+}
+
+/* --- 用户卡片 --- */
+.user-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 24rpx 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: var(--shadow-sm);
+}
+.uc-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+.uc-body { flex: 1; min-width: 0; }
+.uc-name { font-size: 30rpx; font-weight: 700; margin-bottom: 8rpx; }
+.uc-row {
+  display: flex;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-top: 4rpx;
+}
+.uc-label { color: var(--text-hint); width: 80rpx; flex-shrink: 0; }
+.uc-token {
+  font-size: 20rpx;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 2rpx 12rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 240rpx;
+}
+.token-row { align-items: center; }
+
+.uc-actions {
+  display: flex;
+  gap: 8rpx;
+  margin-left: 12rpx;
+  flex-shrink: 0;
+}
+.action-btn {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  background: #F9FAFB;
+}
+.action-btn.edit { background: var(--primary-light); }
+.action-btn.del   { background: var(--danger-light); }
+
+/* --- 弹窗 --- */
+.modal-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;
+  animation: fadeIn 0.2s ease;
+}
+.modal-popup {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #fff;
+  border-radius: 36rpx 36rpx 0 0;
+  padding: 16rpx 36rpx 60rpx;
+  z-index: 101;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.modal-popup.show { transform: translateY(0); }
+.modal-bar {
+  width: 60rpx;
+  height: 6rpx;
+  background: #D1D5DB;
+  border-radius: 3rpx;
+  margin: 12rpx auto 24rpx;
+}
+.modal-title { font-size: 34rpx; font-weight: 700; margin-bottom: 28rpx; }
+.modal-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 32rpx;
+}
+

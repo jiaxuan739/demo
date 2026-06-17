@@ -1,0 +1,80 @@
+<!-- 工作台 - 数据总览仪表盘 -->
+<view class="container">
+
+  <!-- 顶部欢迎区域 -->
+  <view class="hero-card fade-in">
+    <view class="hero-bg"></view>
+    <view class="hero-content">
+      <view class="hero-greeting">👋 欢迎回来</view>
+      <view class="hero-name">{{userInfo.name || '管理员'}}</view>
+      <view class="hero-role">{{userRole === 'admin' ? '系统管理员' : '操作员'}}</view>
+    </view>
+    <view class="hero-stats">
+      <view class="hero-stat" wx:if="{{userRole === 'admin'}}">
+        <view class="hero-stat-num">{{userCount}}</view>
+        <view class="hero-stat-label">人员总数</view>
+      </view>
+      <view class="hero-stat">
+        <view class="hero-stat-num">{{taskCount}}</view>
+        <view class="hero-stat-label">任务总数</view>
+      </view>
+      <view class="hero-stat">
+        <view class="hero-stat-num">{{doingCount}}</view>
+        <view class="hero-stat-label">进行中</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="section fade-in" style="animation-delay:0.1s">
+    <view class="section-title">⚡ 快捷操作</view>
+    <view class="quick-grid">
+      <view class="quick-item" bindtap="goAdminUsers">
+        <view class="quick-icon" style="background:#E8F0FE">👥</view>
+        <view class="quick-text">人员管理</view>
+      </view>
+      <view class="quick-item" bindtap="goAdminTasks">
+        <view class="quick-icon" style="background:#FFF3E0">📋</view>
+        <view class="quick-text">任务管理</view>
+      </view>
+      <view class="quick-item" bindtap="goMyData">
+        <view class="quick-icon" style="background:#E8F5E9">📊</view>
+        <view class="quick-text">我的数据</view>
+      </view>
+      <view class="quick-item" bindtap="refreshData">
+        <view class="quick-icon" style="background:#F3E5F5">🔄</view>
+        <view class="quick-text">刷新数据</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 系统接口状态 -->
+  <view class="section fade-in" style="animation-delay:0.2s">
+    <view class="section-title">🔌 系统集成状态</view>
+    <view class="integration-list">
+      <view class="integration-row">
+        <view class="int-left">
+          <view class="int-dot online"></view>
+          <text>ERP 接口</text>
+        </view>
+        <text class="int-tag">已预留</text>
+      </view>
+      <view class="integration-row">
+        <view class="int-left">
+          <view class="int-dot online"></view>
+          <text>MES 接口</text>
+        </view>
+        <text class="int-tag">已预留</text>
+      </view>
+      <view class="integration-row">
+        <view class="int-left">
+          <view class="int-dot online"></view>
+          <text>WMS 接口</text>
+        </view>
+        <text class="int-tag">已预留</text>
+      </view>
+    </view>
+    <view class="int-hint">点击上方「任务管理」可在二次开发中对接以上系统</view>
+  </view>
+
+</view>

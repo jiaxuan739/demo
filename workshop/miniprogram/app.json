@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/dashboard/dashboard",
+    "pages/my-data/my-data",
+    "pages/admin-users/admin-users",
+    "pages/admin-tasks/admin-tasks"
+  ],
+  "tabBar": {
+    "color": "#8E8E93",
+    "selectedColor": "#2B6FF2",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/dashboard/dashboard",
+        "text": "工作台"
+      },
+      {
+        "pagePath": "pages/admin-users/admin-users",
+        "text": "人员管理"
+      },
+      {
+        "pagePath": "pages/admin-tasks/admin-tasks",
+        "text": "任务管理"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#2B6FF2",
+    "navigationBarTitleText": "车间管理系统",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F0F2F5"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

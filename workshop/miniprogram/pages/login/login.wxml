@@ -1,0 +1,61 @@
+<!-- 登录页 - 车间管理系统 -->
+<view class="login-page">
+
+  <!-- 顶部品牌区 -->
+  <view class="brand-area">
+    <view class="brand-icon">🏭</view>
+    <view class="brand-title">车间管理系统</view>
+    <view class="brand-sub">Workshop Management System</view>
+  </view>
+
+  <!-- 登录方式切换 -->
+  <view class="login-tabs">
+    <view class="tab {{activeTab==='admin'?'active':''}}" bindtap="switchTab" data-tab="admin">
+      🔑 管理员
+    </view>
+    <view class="tab {{activeTab==='scan'?'active':''}}" bindtap="switchTab" data-tab="scan">
+      📱 扫码登录
+    </view>
+  </view>
+
+  <!-- 管理员登录表单 -->
+  <view class="form-card" wx:if="{{activeTab === 'admin'}}">
+    <view class="form-icon">🔐</view>
+    <view class="form-title">管理员登录</view>
+    <view class="input-group">
+      <view class="input-label">用户名</view>
+      <input class="input-field" placeholder="请输入管理员账号" bindinput="onAdminUser" value="{{adminUser}}" />
+    </view>
+    <view class="input-group">
+      <view class="input-label">密码</view>
+      <input class="input-field" placeholder="请输入密码" password bindinput="onAdminPwd" value="{{adminPwd}}" />
+    </view>
+    <button class="btn btn-primary" style="width:100%;margin-top:16rpx" bindtap="adminLogin">
+      登 录 系 统
+    </button>
+    <view class="form-hint">默认账号: admin / admin123</view>
+  </view>
+
+  <!-- 扫码登录表单 -->
+  <view class="form-card" wx:if="{{activeTab === 'scan'}}">
+    <view class="form-icon">📱</view>
+    <view class="form-title">扫码登录</view>
+    <view class="scan-demo">
+      <view class="scan-frame">📷</view>
+      <view class="scan-text">请扫描工位二维码</view>
+    </view>
+    <view class="divider">
+      <view class="divider-text">或手动输入</view>
+    </view>
+    <view class="input-group">
+      <view class="input-label">二维码 Token</view>
+      <input class="input-field" placeholder="输入二维码Token" bindinput="onTokenInput" value="{{qrToken}}" />
+    </view>
+    <button class="btn btn-primary" style="width:100%;margin-top:8rpx" bindtap="scanLogin">
+      验 证 登 录
+    </button>
+    <view class="form-hint">测试Token: qr_zhangsan / qr_lisi / qr_wangwu</view>
+  </view>
+
+</view>
+
